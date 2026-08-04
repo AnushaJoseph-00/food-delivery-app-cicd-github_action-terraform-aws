@@ -157,3 +157,13 @@ git push origin main
 ## Cost Note
 Infrastructure is designed to be created and destroyed: run `terraform destroy` after testing to avoid charges.
 
+## 🙏 Credits
+
+This project uses the [Tomato - Food Delivery App](https://github.com/Mshandev/Food-Delivery) originally built by [Muhammad Shan](https://github.com/Mshandev).
+
+The original application was used as the base for demonstrating DevOps practices including:
+- Containerisation with Docker
+- Infrastructure as Code with Terraform
+- CI/CD automation with GitHub Actions
+- Security scanning with Trivy
+- Deployment to AWS ECS Fargate
