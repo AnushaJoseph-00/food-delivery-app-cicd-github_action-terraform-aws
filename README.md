@@ -87,17 +87,28 @@ food-delivery-app-cicd-terraform/
 
 ## Screenshots
 
-### Application
-![Frontend](screenshots/frontend.png)
-![Admin Panel](screenshots/admin.png)
+## 📸 Screenshots
 
-### CI/CD Pipeline
-![GitHub Actions](screenshots/pipeline.png)
+### 🌐 Application
+| Frontend | Admin Panel | Backend API |
+|---|---|---|
+| ![Frontend](Frontend.jpg) | ![Admin](Admin.jpg) | ![Backend](Backend.jpg) |
 
-### AWS Infrastructure
-![ECS Cluster](screenshots/ecs.png)
-![ECR Repositories](screenshots/ecr.png)
-![ALB](screenshots/alb.png)
+### ⚙️ CI/CD Pipeline
+![GitHub Actions Pipeline](Github_Action_Pipeline.jpg)
+
+### ☁️ AWS Infrastructure
+| ECS Cluster | ECR Repositories |
+|---|---|
+| ![ECS](AWS_ECS.jpg) | ![ECR](AWS_ECR.jpg) |
+
+| ALB Load Balancer | VPC |
+|---|---|
+| ![ALB](ALB_Load_Balancer.jpg) | ![VPC](AWS_VPC.jpg) |
+
+| Subnets | Target Groups |
+|---|---|
+| ![Subnets](Subnet.jpg) | ![Target Groups](Tareget_Group.jpg) |
 
 ## Deployment Steps
 
