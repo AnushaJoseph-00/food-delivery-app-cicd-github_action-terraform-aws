@@ -85,7 +85,6 @@ food-delivery-app-cicd-terraform/
 | IAM Role | tomato-ecs-execution-role | ECS task execution |
 | CloudWatch | /ecs/tomato-* | 7 day log retention |
 
-## Screenshots
 
 ## 📸 Screenshots
 
