@@ -21,60 +21,71 @@ A full-stack food delivery application deployed on AWS using Terraform for infra
 | CI/CD | GitHub Actions |
 | Security Scan | Trivy |
 
-## 📁 Project Structure
+## Project Structure
 
+```
 food-delivery-app-cicd-terraform/
-├── frontend/ # React Vite app
-├── backend/ # Node.js Express API
-├── admin/ # React admin panel
-├── terraform/ # AWS infrastructure
-│ ├── provider.tf
-│ ├── variable.tf
-│ ├── terraform.tfvars
-│ ├── vpc.tf
-│ ├── securitygroup.tf
-│ ├── ecr.tf
-│ ├── iam.tf
-│ ├── ecs.tf
-│ ├── alb.tf
-│ └── outputs.tf
-└── .github/
-└── workflows/
-└── cicd.yml # 4-stage pipeline
-
+│
+├── frontend/                    # React 18 + Vite customer app
+│   ├── src/
+│   └── Dockerfile
+│
+├── backend/                     # Node.js + Express REST API
+│   ├── server.js
+│   └── Dockerfile
+│
+├── admin/                       # React 18 + Vite admin panel
+│   ├── src/
+│   └── Dockerfile
+│
+├── terraform/                   # AWS Infrastructure as Code
+│   ├── providers.tf
+│   ├── variables.tf
+│   ├── vpc.tf
+│   ├── securitygroup.tf
+│   ├── ecr.tf
+│   ├── iam.tf
+│   ├── ecs.tf
+│   ├── alb.tf
+│   └── outputs.tf
+│
+├──  .github/workflows/
+│   └── cicd.yml                    # 4-stage CI/CD pipeline
+│
+├── .gitignore
+└── README.md
+```
 ## CI/CD Pipeline
 
-Push to main
-↓
-Stage 1: Build → Docker build all 3 images
-↓
-Stage 2: Scan → Trivy vulnerability scanning
-↓
-Stage 3: Push → Push images to AWS ECR
-↓
-Stage 4: Deploy → Update ECS Fargate services
+| Stage | Job | Description |
+|---|---|---|
+| 1 | Build | Docker build all 3 images |
+| 2 | Trivy Scan | Vulnerability scanning |
+| 3 | Push | Push images to AWS ECR |
+| 4 | Deploy | Update ECS Fargate services |
 
 ## AWS Infrastructure (Terraform)
 
-VPC (10.0.0.0/16)
-├── Public Subnet 1 (10.0.1.0/24) - us-east-1a
-├── Public Subnet 2 (10.0.2.0/24) - us-east-1b
-├── Internet Gateway
-├── Route Tables
-├── Security Groups (ALB + ECS)
-├── ECR Repositories (frontend, backend, admin)
-├── ECS Cluster (tomato-cluster)
-│ ├── Frontend Service (Nginx + React)
-│ ├── Backend Service (Node.js)
-│ └── Admin Service (Nginx + React)
-├── Application Load Balancer
-│ ├── Port 80 → Frontend
-│ ├── Port 4000 → Backend
-│ └── Port 8080 → Admin
-├── IAM Roles
-└── CloudWatch Log Groups
+| Resource | Name | Details |
+|---|---|---|
+| VPC | tomato-vpc | CIDR: 10.0.0.0/16 |
+| Public Subnet 1 | tomato-public-subnet-1 | 10.0.1.0/24 - us-east-1a |
+| Public Subnet 2 | tomato-public-subnet-2 | 10.0.2.0/24 - us-east-1b |
+| Internet Gateway | tomato-igw | Attached to VPC |
+| Security Group | tomato-alb-sg | Ports 80, 4000, 8080 |
+| Security Group | tomato-ecs-sg | Traffic from ALB only |
+| ECR Repository | tomato-frontend | React frontend image |
+| ECR Repository | tomato-backend | Node.js backend image |
+| ECR Repository | tomato-admin | React admin image |
+| ECS Cluster | tomato-cluster | Fargate launch type |
+| ECS Service | tomato-frontend-service | Port 80 |
+| ECS Service | tomato-backend-service | Port 4000 |
+| ECS Service | tomato-admin-service | Port 8080 |
+| Load Balancer | tomato-alb | Public facing ALB |
+| IAM Role | tomato-ecs-execution-role | ECS task execution |
+| CloudWatch | /ecs/tomato-* | 7 day log retention |
 
-## 📸 Screenshots
+## Screenshots
 
 ### Application
 ![Frontend](screenshots/frontend.png)
@@ -88,7 +99,7 @@ VPC (10.0.0.0/16)
 ![ECR Repositories](screenshots/ecr.png)
 ![ALB](screenshots/alb.png)
 
-## 🚀 Deployment Steps
+## Deployment Steps
 
 ### Prerequisites
 - AWS CLI configured
@@ -133,5 +144,5 @@ git push origin main
 | `PORT` | Backend server port (4000) |
 
 ## Cost Note
-Infrastructure is designed to be created and destroyed — run `terraform destroy` after testing to avoid charges.
+Infrastructure is designed to be created and destroyed: run `terraform destroy` after testing to avoid charges.
 
