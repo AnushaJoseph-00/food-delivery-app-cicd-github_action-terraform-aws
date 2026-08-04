@@ -6,11 +6,13 @@ on:
       - main
     paths-ignore:
       - 'README.md'
+      - 'screenshots/**'
   pull_request:
     branches:
       - main
     paths-ignore:
       - 'README.md'
+      - 'screenshots/**'
 
 env:
   AWS_REGION: us-east-1
