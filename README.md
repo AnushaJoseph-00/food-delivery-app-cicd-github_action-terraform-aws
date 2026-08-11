@@ -1,4 +1,4 @@
-# Tomato - Food Delivery App | DevOps CI/CD Project
+# Food Delivery App | DevOps CI/CD Project
 
 A full-stack food delivery application deployed on AWS using Terraform for infrastructure provisioning and GitHub Actions for CI/CD automation.
 
