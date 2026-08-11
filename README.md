@@ -93,10 +93,10 @@ food-delivery-app-cicd-terraform/
 |---|---|---|
 | ![Frontend](Frontend.jpg) | ![Admin](Admin.jpg) | ![Backend](Backend.jpg) |
 
-### ⚙️ CI/CD Pipeline
+###  CI/CD Pipeline
 ![GitHub Actions Pipeline](Github_Action_Pipeline.jpg)
 
-### ☁️ AWS Infrastructure
+###  AWS Infrastructure
 | ECS Cluster | ECR Repositories |
 |---|---|
 | ![ECS](AWS_ECS.jpg) | ![ECR](AWS_ECR.jpg) |
